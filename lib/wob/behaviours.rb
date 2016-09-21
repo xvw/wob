@@ -6,15 +6,15 @@ module Wob
   module Return
 
     # A shortcut to wrap a value
-    def wrap(value)
-      self.class.wrap(value)
+    def wrapM(value)
+      self.class.wrapM(value)
     end
     
   end
 
   # This module implements bindM using
   # liftM and joinM
-  module Bind
+  module BindM
 
     include Return
 
@@ -28,26 +28,47 @@ module Wob
 
   # This module implements liftM and joinM
   # using bindM
-  module Join
+  module JoinM
 
     include Return
 
     # joinM removes one layer of nesting of a monadic value:
     # x.joinM where x is a monad of a monad of x changes m (m x) to m x
     def joinM
-      bind(&:itself)
+      bindM(&:itself)
     end
 
     
     # lets a non-monadic function f operate on the contents of monad m
     def liftM(&block)
-      bind do | elt |
-        wrap block.call(elt)
+      bindM do | elt |
+        wrapM block.call(elt)
       end
     end
     
   end
-  
-  
+
+  # This module implement filterM
+  module FilterM
+
+    # A shortcut for neutralM
+    def neutralM
+      self.class.neutralM
+    end
+
+    # Returns a bindable function for filtering
+    # the receiver must implemented a neutralM and wrapM
+    def filterM(&block)
+      bindM do | elt |
+        if block.call(elt)
+        then wrapM(elt)
+        else neutralM
+        end
+      end
+    end
+    
+  end
 
 end
+
+

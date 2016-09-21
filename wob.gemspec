@@ -10,6 +10,7 @@ Gem::Specification.new do |s|
   s.email       = 'xaviervdw@gmail.com'
   s.files       = [
     'lib/wob.rb'
+    'lib/wob/behaviours.rb
   ]
   s.homepage    = 'http://xvw.github.io'
   s.license     = 'GPL-3.0'

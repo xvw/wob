@@ -16,7 +16,8 @@ Gem::Specification.new do |s|
     'lib/wob.rb',
     'lib/wob/behaviours.rb',
     'lib/wob/nondeterminist.rb',
-    'lib/wob/error.rb'
+    'lib/wob/error.rb',
+    'lib/wob/concurrency.rb'
   ]
   s.homepage    = 'http://xvw.github.io'
   s.license     = 'GPL-3.0'

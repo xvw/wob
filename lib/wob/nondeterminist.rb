@@ -26,4 +26,3 @@ class Array
   include Wob::FilterM
 
 end
-

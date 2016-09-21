@@ -9,6 +9,18 @@ module Wob
     def wrapM(value)
       self.class.wrapM(value)
     end
+
+    # Chain bindM
+    #
+    # Example :
+    #    elt.do [procA, procB, procC]
+    #    = elt.bindM(&procA).bindM(&procB).bindM(&procC)
+    #
+    def do(list)
+      list.reduce(self) do |acc, fun|
+        acc.bindM(&fun)
+      end
+    end
     
   end
 

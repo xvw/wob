@@ -35,5 +35,15 @@ describe Wob do
     expect(r).to eql([2, 4])
   end
 
+  it "test do notation" do
+    a = lambda {|x| x + 1}
+    b = lambda {|x| x + 2}
+    c = lambda {|x| x + 3}
+    s = [1,2,3]
+    x = s.do [a, b, c]
+    y = s.bindM(&a).bindM(&b).bindM(&c)
+    expect(x).to eql(y)
+  end
+
   
 end

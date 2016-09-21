@@ -1,6 +1,8 @@
 # Monadic Error
 class Error
 
+  attr_reader :value
+
   # Implement wrapM function
   def self.wrapM(x)
     Succeed.new(x)
@@ -32,7 +34,7 @@ class Succeed < Error
 
     # try with
   def try_with(&block)
-    @value
+    self
   end
   
 end
@@ -46,7 +48,7 @@ class Failure < Error
 
   # Bind implementation
   def bindM(&block)
-    @value
+    self
   end
 
     # try with

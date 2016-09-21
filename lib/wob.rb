@@ -1,6 +1,6 @@
 # To be done :v 
 class Wob
   def self.first
-    puts "Hello World"
+    "Hello World"
   end
 end

@@ -13,5 +13,7 @@ Gem::Specification.new do |s|
   ]
   s.homepage    = 'http://xvw.github.io'
   s.license     = 'GPL-3.0'
-  
+
+  s.add_development_dependency "rake"
+  s.add_development_dependency "rspec"
 end
